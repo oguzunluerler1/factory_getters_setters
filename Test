@@ -1,0 +1,54 @@
+
+public class Test 
+{
+	
+	
+	// hata yakalamak icin ornek fonksiyon
+	public static int Bolme(int n, int d)
+	{
+		if(d == 0)
+			throw new RuntimeException("0'a bolme tanimsizdir");
+		
+		return n / d;
+	}
+	
+	
+
+    public static void main(String[] args) 
+    {
+
+    	// hata yakalama ornegi:
+    	//      firlatilan hatayi yakalamak icin 
+    	//                 try-catch blogu icine alinmasi gerekir
+    	try 
+    	{
+    		int q = Bolme(10,5);		// hata firlatilmaz
+    		System.out.println(q);
+    		
+    		q = Bolme(10,0);			// hata firlatilir
+    		System.out.println(q);
+    		
+    		
+    	}catch (Exception e) 						// hata yakalanir
+    	{
+            System.out.println(e);					// burasi calistirilir
+    	}
+    	
+    	// Fabrika icin ornek denemeler, 
+    	// farkli seyler denemeyi ihmal etmeyin
+    	Fabrika f = new Fabrika(5,10,100);
+    	f.calisanAl(10);
+    	f.maasZam(5);
+    	System.out.println(f.getCalisan_sayisi());		// 10 olmali
+    	System.out.println(f.getMaas());				// 5 olmali
+    	System.out.println(f.getKapital());				// 100 olmali
+    	
+    	System.out.println("kapital = " + f.urunSat(4,5));	// kapital = 120
+    	System.out.println("kalan urun sayisi = " + f.getStok_miktari()); // kalan urun = 1
+      
+    	System.out.println("yeni urun sayisi = " + f.urunAl(3,10)); // yeni urun = 4
+    	System.out.println("kapital = " + f.getKapital());          // kapital = 90
+    		
+    }
+
+}
